@@ -53,7 +53,7 @@ void loop() {
   long duration = pulseIn(ECHO_PIN, HIGH);
   long distance = duration * 0.034 / 2;
 
-  if (distance < 30) { // Waste detected within 30 cm
+  if (distance < 15) { // Waste detected within 30 cm
     // Sound the buzzer
     digitalWrite(BUZZER_PIN, HIGH);
     delay(1000);
@@ -90,7 +90,9 @@ void loop() {
     lcd.print(" g");
      //print moisture value on serial monitor
     Serial.print("Moisture Value: ");
-       Serial.println(moistureValue); 
+       Serial.println(moistureValue);
+       Serial.print("Weight Value");
+       Serial.println(weight);
   }
 
   delay(2000); // General delay between operations
