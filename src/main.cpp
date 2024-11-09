@@ -83,6 +83,11 @@ void loop() {
 
     // Measure weight
     float weight = loadCell.get_units(10);
+    //it is showing an error value of 200grams in weight sensor so i have added this condition to avoid that
+    weight = weight - 300;
+    if(weight < 0) {
+      weight = 0;
+    }
     lcd.clear();
     lcd.setCursor(0, 0);
     lcd.print("Weight: ");
