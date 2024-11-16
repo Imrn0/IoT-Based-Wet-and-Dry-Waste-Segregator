@@ -53,7 +53,7 @@ void loop() {
   long duration = pulseIn(ECHO_PIN, HIGH);
   long distance = duration * 0.034 / 2;
 
-  if (distance < 15) { // Waste detected within 30 cm
+  if (distance < 20) { // Waste detected within 30 cm
     // Sound the buzzer
     digitalWrite(BUZZER_PIN, HIGH);
     delay(1000);
@@ -64,7 +64,7 @@ void loop() {
     lcd.clear();
     lcd.setCursor(0, 0);
 
-    if (moistureValue <4000) { // Wet waste
+    if (moistureValue <2600) { // Wet waste
       servo.write(160); // Turn left for wet waste
       lcd.print("WET");
       Serial.println(" ==> Wet Waste");
@@ -84,7 +84,7 @@ void loop() {
     // Measure weight
     float weight = loadCell.get_units(10);
     //it is showing an error value of 200grams in weight sensor so i have added this condition to avoid that
-    weight = weight - 300;
+    weight = weight - 6000;
     if(weight < 0) {
       weight = 0;
     }
